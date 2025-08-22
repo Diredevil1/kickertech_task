@@ -1,5 +1,9 @@
-import "./App.css";
+import { EuroBasket } from "./Tables/EuroBasket/EuroBasker";
 
 export const App = () => {
-  return <></>;
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <EuroBasket />
+    </div>
+  );
 };
