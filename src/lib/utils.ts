@@ -1,4 +1,4 @@
-import type { Scores } from "@/Tables/Premier/Premier";
+import type { Scores } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

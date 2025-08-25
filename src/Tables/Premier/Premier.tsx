@@ -2,18 +2,7 @@ import { useState } from "react";
 import { AddScore } from "@/components/molecules/AddScore";
 import { AddTeam } from "@/components/molecules/AddTeam";
 import { Table } from "@/components/molecules/Table";
-
-export interface Scores {
-  games: number;
-  wins: number;
-  draws: number;
-  losses: number;
-}
-
-export interface Team {
-  name: string;
-  scores: Scores;
-}
+import type { Team } from "../../types";
 
 export const Premier = () => {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -25,7 +14,7 @@ export const Premier = () => {
   const [playedMatches, setPlayedMatches] = useState<string[]>([]);
 
   return (
-    <div className="max-w-md mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="max-w-md min-w-sm mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden flex-1">
       <div className="bg-purple-800 text-white p-4">
         <h1 className="text-xl font-bold">Premier League</h1>
       </div>
@@ -52,7 +41,7 @@ export const Premier = () => {
           awayScore={awayScore}
           awayTeam={awayTeam}
         />
-        <Table teams={teams} />
+        <Table teams={teams} variant="Premier" />
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button";
-
 export const Wimbledon = () => {
   return (
-    <div className="max-w-md mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="max-w-md min-w-sm mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden flex-1">
       {/* Header */}
       <div className="flex items-center p-4 bg-green-600 text-white">
         <span className="text-xl mr-2">🎾</span>

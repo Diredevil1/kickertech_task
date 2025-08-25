@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import type { Team } from "@/Tables/Premier/Premier";
+import type { Team } from "@/types";
 
 interface Props {
   teams: Team[];

@@ -8,10 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Team } from "@/Tables/Premier/Premier";
+
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { sum } from "@/lib/utils";
+import type { MatchHistory, Team } from "@/types";
 
 interface Props {
   teams: Team[];
@@ -21,6 +22,7 @@ interface Props {
   setAwayScore: React.Dispatch<React.SetStateAction<string>>;
   setTeams: React.Dispatch<React.SetStateAction<Team[]>>;
   setPlayedMatches: React.Dispatch<React.SetStateAction<string[]>>;
+  setMatchHistory?: React.Dispatch<React.SetStateAction<MatchHistory[]>>;
   playedMatches: string[];
   homeTeam: string;
   awayTeam: string;
@@ -36,6 +38,7 @@ export const AddScore: FC<Props> = ({
   setAwayTeam,
   setTeams,
   setPlayedMatches,
+  setMatchHistory,
   playedMatches,
   homeTeam,
   awayTeam,
@@ -62,6 +65,19 @@ export const AddScore: FC<Props> = ({
         "This match has already been played. Please select different teams."
       );
       return;
+    }
+
+    const homeTeamDetails = teams.find((t) => t.name === homeTeam);
+    const awayTeamDetails = teams.find((t) => t.name === awayTeam);
+
+    if (homeTeamDetails && awayTeamDetails && setMatchHistory) {
+      const newMatch: MatchHistory = {
+        homeTeamName: homeTeam,
+        awayTeamName: awayTeam,
+        homeScore: newHomeScore,
+        awayScore: newAwayScore,
+      };
+      setMatchHistory((prevHistory) => [newMatch, ...prevHistory]); // Add the new match to the top
     }
 
     setPlayedMatches([...playedMatches, matchKey]);
