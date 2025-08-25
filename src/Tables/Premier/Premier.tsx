@@ -14,7 +14,7 @@ export const Premier = () => {
   const [playedMatches, setPlayedMatches] = useState<string[]>([]);
 
   return (
-    <div className="max-w-md min-w-sm mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden flex-1">
+    <div className="max-w-md min-w-sm mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden flex-1 font-premier">
       <div className="bg-purple-800 text-white p-4">
         <h1 className="text-xl font-bold">Premier League</h1>
       </div>

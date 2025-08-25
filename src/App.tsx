@@ -1,4 +1,4 @@
-import { EuroBasket } from "./Tables/EuroBasket/EuroBasker";
+import { EuroBasket } from "./Tables/EuroBasket/EuroBasket";
 import { Premier } from "./Tables/Premier/Premier";
 import { Wimbledon } from "./Tables/Wimbledon/Wimbledon";
 

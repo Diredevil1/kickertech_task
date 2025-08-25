@@ -81,7 +81,7 @@ export const EuroBasket = () => {
           {matchHistory.map((match, index) => (
             <div
               key={index}
-              className="flex justify-between items-center p-2 border-b border-gray-700"
+              className="flex justify-between items-center p-2 border-b border-gray-700 font-eurobasket"
             >
               <span className="flex items-center space-x-2">
                 <span>{match.homeTeamName}</span>
@@ -95,7 +95,6 @@ export const EuroBasket = () => {
           ))}
         </div>
 
-        {/* Score Table */}
         <Table teams={teams} variant="Eurobasket" />
       </div>
     </div>

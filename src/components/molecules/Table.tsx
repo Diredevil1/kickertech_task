@@ -46,6 +46,8 @@ export const Table: FC<Props> = ({ teams, variant }) => {
           <>
             <td className="py-2 px-2">{team.scores.games}</td>
             <td className="py-2 px-2">{team.scores.wins}</td>
+            <td className="py-2 px-2">{team.scores.losses}</td>
+            <td className="py-2 pl-2 font-semibold">{sum(team.scores)}</td>
           </>
         )}
       </tr>
@@ -81,8 +83,10 @@ export const Table: FC<Props> = ({ teams, variant }) => {
             )}
             {variant === "Wimbledon" && (
               <>
-                <th className="py-2 px-2 font-bold">P</th>
-                <th className="py-2 px-2 font-bold">Wins</th>
+                <th className="py-2 px-2 font-bold">M</th>
+                <th className="py-2 px-2 font-bold">W</th>
+                <th className="py-2 px-2 font-bold">L</th>
+                <th className="py-2 px-2 font-bold">Pts</th>
               </>
             )}
           </tr>
