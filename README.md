@@ -1,69 +1,18 @@
-# React + TypeScript + Vite
+# React + TypeScript = Kickertech demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Instalation:
+Copy repo -> navigate to it via your IDE -> run "npm i"(or simply npm install) -> and "npm run dev" to launch it.
 
-Currently, two official plugins are available:
+Some mistakes or logic issues within the task file:
+1. its not columns it should be rows.
+2. The calculation is currently unified between different different sports, even though basketball cannot end while being in draw.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Some info:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+I'm well aware its not perfect, there could be so much more done(set themes for example, cut down components even smaller and so on, add flags), I chose to use local storage for data persistance simply due to simplicity of use and because there is no api calls within this demo, if there was I might have used some library that would eases handling them and would intruduce caching/persistance like TanstackQuery or tool of similar nature.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+There is stylistic issues as well, or not fully completed modal contents, right now they use the same reusable content, which very well can be improved, then validations, error logging etc... you could easily spend 10-20 hours more to fully complete it, i simply dont have time for that :D
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Of course if there will be any questions regarding the logic I used or anything at all, let me know.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
