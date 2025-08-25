@@ -16,7 +16,7 @@ export const Table: FC<Props> = ({ teams, variant }) => {
       return (
         <tr>
           <td colSpan={6} className="py-4 px-4 text-center text-gray-500">
-            No teams yet
+            No scores yet
           </td>
         </tr>
       );

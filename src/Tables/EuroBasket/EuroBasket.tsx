@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { MatchHistory, Team } from "../../types";
 
 import {
@@ -13,19 +13,46 @@ import { Table } from "@/components/molecules/Table";
 import { AddTeam } from "@/components/molecules/AddTeam";
 import { AddScore } from "@/components/molecules/AddScore";
 
+const STORAGE_KEY_TEAMS = "eurobasket_teams";
+const STORAGE_KEY_HISTORY = "eurobasket_match_history";
+
 export const EuroBasket = () => {
-  const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<Team[]>(() => {
+    try {
+      const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
+      return storedTeams ? JSON.parse(storedTeams) : [];
+    } catch (error) {
+      console.error("Failed to load teams from localStorage", error);
+      return [];
+    }
+  });
+
+  const [playedMatches, setPlayedMatches] = useState<string[]>([]);
   const [newTeamName, setNewTeamName] = useState("");
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
   const [homeScore, setHomeScore] = useState("");
   const [awayScore, setAwayScore] = useState("");
-  const [playedMatches, setPlayedMatches] = useState<string[]>([]);
-  const [matchHistory, setMatchHistory] = useState<MatchHistory[]>([]);
+  const [matchHistory, setMatchHistory] = useState<MatchHistory[]>(() => {
+    try {
+      const storedHistory = localStorage.getItem(STORAGE_KEY_HISTORY);
+      return storedHistory ? JSON.parse(storedHistory) : [];
+    } catch (error) {
+      console.error("Failed to load match history from localStorage", error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(teams));
+  }, [teams]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(matchHistory));
+  }, [matchHistory]);
 
   return (
     <div className="max-w-md min-w-sm mx-auto my-10 bg-gray-800 text-white rounded-xl shadow-lg overflow-hidden flex-1">
-      {/* Header */}
       <div className="flex items-center p-4">
         <span className="text-xl mr-2">🏀</span>
         <h1 className="text-xl font-bold">EUROBASKET</h1>

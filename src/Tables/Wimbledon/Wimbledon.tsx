@@ -9,16 +9,32 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { Team } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const STORAGE_KEY_TEAMS = "wimbledon_teams";
 
 export const Wimbledon = () => {
-  const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<Team[]>(() => {
+    try {
+      const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
+      return storedTeams ? JSON.parse(storedTeams) : [];
+    } catch (error) {
+      console.error("Failed to load teams from localStorage", error);
+      return [];
+    }
+  });
+
+  const [playedMatches, setPlayedMatches] = useState<string[]>([]);
   const [newTeamName, setNewTeamName] = useState("");
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
   const [homeScore, setHomeScore] = useState("");
   const [awayScore, setAwayScore] = useState("");
-  const [playedMatches, setPlayedMatches] = useState<string[]>([]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(teams));
+  }, [teams]);
+
   return (
     <div className="max-w-md min-w-sm mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden flex-1 font-wimbledon">
       {/* Header */}
